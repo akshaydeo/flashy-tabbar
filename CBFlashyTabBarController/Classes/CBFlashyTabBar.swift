@@ -34,6 +34,13 @@ open class CBFlashyTabBar: UITabBar {
         }
     }
 
+     open func setFont(font:UIFont){
+        self.buttons.forEach { (button:CBTabBarButton) in
+            button.tabLabel.font = font
+        }
+        reloadViews()
+    }
+    
     open override var tintColor: UIColor! {
         didSet {
             buttons.forEach { $0.tintColor = tintColor }
