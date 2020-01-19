@@ -38,7 +38,6 @@ open class CBFlashyTabBar: UITabBar {
         self.buttons.forEach { (button:CBTabBarButton) in
             button.tabLabel.font = font
         }
-        reloadViews()
     }
     
     open override var tintColor: UIColor! {
