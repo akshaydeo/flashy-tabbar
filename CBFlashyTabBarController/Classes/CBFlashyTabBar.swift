@@ -10,6 +10,7 @@ import UIKit
 
 open class CBFlashyTabBar: UITabBar {
 
+    private var font:UIFont = UIFont.systemFont(ofSize: 12, weight: .semibold)
     private var buttons: [CBTabBarButton] = []
     public var animationSpeed: Double = 1.0 {
         didSet {
@@ -34,10 +35,9 @@ open class CBFlashyTabBar: UITabBar {
         }
     }
 
-     open func setFont(font:UIFont){
-        self.buttons.forEach { (button:CBTabBarButton) in
-            button.tabLabel.font = font
-        }
+    open func setFont(font:UIFont) {
+        self.font = font
+        reloadViews()
     }
     
     open override var tintColor: UIColor! {
@@ -105,6 +105,7 @@ open class CBFlashyTabBar: UITabBar {
         if selectedItem != nil && item === selectedItem {
             button.select(animated: false)
         }
+        button.tabLabel.font = self.font
         self.addSubview(button)
         return button
     }
